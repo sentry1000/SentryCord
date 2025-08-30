@@ -1,6 +1,6 @@
 Drag and drop/copy and paste the provided .css file into your theme folder for either Vencord or BetterDiscord, and enable it through the clients theme settings.
 For the transparency effect, install and run MicaForEveryone, add Discord as a rule, set the Backdrop type to either Mica or Acrylic, finally turn on Enable Blur Behind.
+In Discord settings for Vencord turn on Enable Window Transparency or it wont work as intended.
 
-<img width="2560" height="1331" alt="image" src="https://github.com/user-attachments/assets/fa7ea84f-e50e-47a1-b7a8-b6df2c5263ae" /> <img width="358" height="142" alt="image" src="https://github.com/user-attachments/assets/ed08a88e-f803-4f70-9880-d3c5301f70b8" />
-
-<img width="1623" height="662" alt="image" src="https://github.com/user-attachments/assets/731a7619-a309-4d63-aae8-a17b533f19de" />
+<img width="2560" height="1331" alt="image" src="https://github.com/user-attachments/assets/fa7ea84f-e50e-47a1-b7a8-b6df2c5263ae" /> <img width="358" height="142" alt="image" src="https://github.com/user-attachments/assets/ed08a88e-f803-4f70-9880-d3c5301f70b8" /> **<img width="2560" height="1331" alt="image" src="https://github.com/user-attachments/assets/42f9b8ca-12a2-4949-984d-69772a99052f" />
+**<img width="2560" height="1331" alt="image" src="https://github.com/user-attachments/assets/ec82e96f-aa2c-45ba-ab17-7b37d2cc7432" /> <img width="1623" height="662" alt="image" src="https://github.com/user-attachments/assets/731a7619-a309-4d63-aae8-a17b533f19de" />

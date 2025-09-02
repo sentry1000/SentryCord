@@ -1,9 +1,29 @@
-/**
+ /**
  * @name SentryCord
  * @author Sentry
- * @version 2.1
- * @description A fluent mica Discord theme inspired by Apple's MacOS.
+ * @version 2.2
+ * @description A fluent mica Discord theme inspired by Apple's macOS.
 **/
+
+/*
+                    'c.         
+                 ,xNMM.          
+               .OMMMMo          
+               OMMM0,            
+     .;loddo:' loolloddol;.      
+   cKMMMMMMMMMMNWMMMMMMMMMM0:    
+ .KMMMMMMMMMMMMMMMMMMMMMMMWd.    
+ XMMMMMMMMMMMMMMMMMMMMMMMX.      
+;MMMMMMMMMMMMMMMMMMMMMMMM:           
+:MMMMMMMMMMMMMMMMMMMMMMMM:       
+.MMMMMMMMMMMMMMMMMMMMMMMMX.      
+ kMMMMMMMMMMMMMMMMMMMMMMMMWd.    
+ .XMMMMMMMMMMMMMMMMMMMMMMMMMMk   
+  .XMMMMMMMMMMMMMMMMMMMMMMMMK.   
+    kMMMMMMMMMMMMMMMMMMMMMMd      
+     ;KMMMMMMMWXXWMMMMMMMk.       
+       .cooc,.    .,coo:.       
+*/
 
 /* ========================================
    IMPORTS
@@ -649,4 +669,120 @@ li[class*="messageListItem"]:hover {
 [role="menuitem"]:hover {
     background: rgba(255, 255, 255, 0.07) !important;
     color: var(--header-primary) !important;
+}
+
+/* ========================================
+   VOICE CHAT SPEAKING INDICATOR FIX
+   ======================================== */
+
+/* Voice panel speaking indicators */
+.panels_c48ade .container__3386e .avatarSpeaking__3386e,
+.panels_c48ade .container__3386e .avatar__3386e.avatarSpeaking__3386e {
+    box-shadow: inset 0 0 0 2px #43a25a, inset 0 0 0 3px var(--background-secondary) !important;
+    animation: speaking-pulse 1s ease-in-out infinite alternate !important;
+}
+
+/* Speaking animation */
+@keyframes speaking-pulse {
+    0% {
+        box-shadow: inset 0 0 0 2px #43a25a, inset 0 0 0 3px var(--background-secondary) !important;
+    }
+    100% {
+        box-shadow: inset 0 0 0 3px #43a25a, inset 0 0 0 4px var(--background-secondary) !important;
+    }
+}
+
+/* Voice user speaking indicator (main voice panel) */
+.voice__3386e .avatar__3386e {
+    transition: box-shadow 0.2s ease !important;
+}
+
+.voice__3386e .avatarSpeaking__3386e {
+    box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    animation: voice-speaking-glow 1s ease-in-out infinite alternate !important;
+}
+
+@keyframes voice-speaking-glow {
+    0% {
+        box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    }
+    100% {
+        box-shadow: inset 0 0 0 3px var(--green-2, #43a25a), 0 0 8px rgba(67, 162, 90, 0.4) !important;
+    }
+}
+
+/* Voice channel member list speaking indicators */
+.voiceUser__3386e .avatar__91877,
+.member__3386e .avatar__91877 {
+    position: relative;
+}
+
+.voiceUser__3386e .avatarSpeaking__91877,
+.member__3386e .avatarSpeaking__91877 {
+    box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    animation: member-speaking-pulse 0.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes member-speaking-pulse {
+    0% {
+        box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    }
+    100% {
+        box-shadow: inset 0 0 0 3px var(--green-2, #43a25a), 0 0 6px rgba(67, 162, 90, 0.3) !important;
+    }
+}
+
+/* Voice activity speaking ring for user panel */
+.container__3386e .avatarSpeaking__3386e::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid var(--green-2, #43a25a);
+    border-radius: 50%;
+    animation: speaking-ring-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes speaking-ring-pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(1.1);
+    }
+}
+
+/* Ensure speaking indicators work with transparency */
+.panels_c48ade,
+.voice__3386e,
+.voiceUser__3386e {
+    isolation: isolate;
+}
+
+/* Fix for any potential z-index issues */
+.avatarSpeaking__3386e,
+.avatarSpeaking__91877 {
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+/* Additional fallback for speaking indicators */
+[class*="avatarSpeaking"] {
+    box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    animation: fallback-speaking-glow 1s ease-in-out infinite alternate !important;
+}
+
+@keyframes fallback-speaking-glow {
+    0% {
+        box-shadow: inset 0 0 0 2px var(--green-2, #43a25a) !important;
+    }
+    100% {
+        box-shadow: inset 0 0 0 3px var(--green-2, #43a25a), 0 0 8px rgba(67, 162, 90, 0.2) !important;
+    }
 }

@@ -106,7 +106,7 @@ body {
     --bg-1: #2e2e2ecb; /* dark buttons when clicked */
     --bg-2: #0f0f0f65; /* dark buttons */
     --bg-3: #0f0f0f65; /* spacing, secondary elements */
-    --bg-4: #; /* main background color */
+    --bg-4: #0f0f0f56; /* main background color */
     --hover: hsla(235, 15%, 53%, 0.1); /* channels and buttons when hovered */
     --active: hsla(235, 15%, 53%, 0.2); /* channels and buttons when clicked or selected */
     --active-2: hsla(0, 0%, 0%, 0.3); /* extra state for transparent buttons */
@@ -821,3 +821,4 @@ li[class*="messageListItem"]:hover {
     -webkit-backdrop-filter: none !important;
     filter: none !important;
 }
+

@@ -5,26 +5,6 @@
  * @description A fluent mica Discord theme inspired by Apple's macOS.
 **/
 
-/*
-                    'c.         
-                 ,xNMM.          
-               .OMMMMo          
-               OMMM0,            
-     .;loddo:' loolloddol;.      
-   cKMMMMMMMMMMNWMMMMMMMMMM0:    
- .KMMMMMMMMMMMMMMMMMMMMMMMWd.    
- XMMMMMMMMMMMMMMMMMMMMMMMX.      
-;MMMMMMMMMMMMMMMMMMMMMMMM:           
-:MMMMMMMMMMMMMMMMMMMMMMMM:       
-.MMMMMMMMMMMMMMMMMMMMMMMMX.      
- kMMMMMMMMMMMMMMMMMMMMMMMMWd.    
- .XMMMMMMMMMMMMMMMMMMMMMMMMMMk   
-  .XMMMMMMMMMMMMMMMMMMMMMMMMK.   
-    kMMMMMMMMMMMMMMMMMMMMMMd      
-     ;KMMMMMMMWXXWMMMMMMMk.       
-       .cooc,.    .,coo:.       
-*/
-
 /* ========================================
    IMPORTS
    ======================================== */
@@ -785,4 +765,59 @@ li[class*="messageListItem"]:hover {
     100% {
         box-shadow: inset 0 0 0 3px var(--green-2, #43a25a), 0 0 8px rgba(67, 162, 90, 0.2) !important;
     }
+}
+
+/* ========================================
+   REMOVE ALL TRANSPARENCY - SOLID CONTEXT MENUS
+   ======================================== */
+
+/* Make context menus completely solid - no transparency at all */
+[role="menu"],
+.menu_dc52c6,
+.contextMenu_dc52c6 {
+    background: var(--background-floating) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Make submenus completely solid too */
+[role="menu"] [role="menu"],
+.menu_dc52c6 .menu_dc52c6,
+.submenu_dc52c6 {
+    background: var(--background-floating) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Remove any transparency from menu items */
+[role="menuitem"],
+.item_dc52c6 {
+    background: transparent !important;
+    opacity: 1 !important;
+}
+
+[role="menuitem"]:hover,
+.item_dc52c6:hover {
+    background: var(--background-modifier-hover) !important;
+    opacity: 1 !important;
+}
+
+/* Remove transparency from plugin menus */
+.bd-context-menu,
+.vc-context-menu {
+    background: var(--background-floating) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Force remove any filters or effects that might be applied by your theme */
+[role="menu"] *,
+.menu_dc52c6 *,
+.contextMenu_dc52c6 * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
 }

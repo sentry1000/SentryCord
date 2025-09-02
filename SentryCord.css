@@ -1,7 +1,7 @@
 /**
  * @name SentryCord
  * @author Sentry
- * @version 1.01
+ * @version 2.00
  * @description A fluent mica Discord theme inspired by Apple's MacOS.
 **/
 
@@ -10,921 +10,673 @@
    ======================================== */
 @import url('https://discord-extensions.github.io/macos-titlebar/src/source.css');
 @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
-@import url("https://discord-mica.pages.dev/src/main.css");
 @import url("https://raw.githubusercontent.com/acheronx0577/Transparent-Activity-Discord/refs/heads/main/Transparent%20Activity%20Discord.css");
-@import url("https://raw.githubusercontent.com/acheronx0577/Better-Compact-Command-Menu-With-Smooth-Transition/refs/heads/main/Better%20Compact%20Command%20Menu%20With%20Smooth%20Transition.css");
-@import url('https://raw.githubusercontent.com/acheronx0577/Transparent-Quick-Switcher-Discord/main/Transparent%20Quick%20Switcher.css');
-@import url("https://raw.githubusercontent.com/Augenbl1ck/Discord-Styles/refs/heads/main/customStatusBubble.css");
-@import url("https://raw.githubusercontent.com/sadan4/discordStyles/refs/heads/main/src/qol/folderScrollBar.css");
-
-/* Import SF Pro from cdnfonts.com */
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 /* ========================================
    ROOT VARIABLES & THEME CONFIGURATION
    ======================================== */
+	
+/* main.css */
+
+body {
+    /* font, change to '' for default discord font */
+    --font: 'SF Pro Display'; /* change to '' for default discord font */
+    --code-font: 'SF Pro Display'; /* change to '' for default discord font */
+    font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
+
+    /* sizes */
+    --gap: 8px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+    /* animation/transition options */
+    --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+
+    /* top bar options */
+    --top-bar-height: 36px; /* A larger value to prevent collisions */
+    --top-bar-button-position: off; /* Change to 'off' to prevent conflicts with the macos-titlebar theme */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: ; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: off; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: on; /* Change to 'off' to prevent conflicts with the macos-titlebar theme */
+    --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: image; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url('https://raw.githubusercontent.com/sentry1000/SentryCord/refs/heads/main/applelogo4.png'); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: on; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: on; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-5); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+
+    /* unrounding options */
+    --unrounding: off; /* off: default, on: remove rounded corners from panels */
+
+    /* styling options */
+    --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
+    --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
+    --ascii-loader: apple; /* off: default, system24: use system24 ascii loader, apple: use apple loader */
+
+    /* panel labels */
+    --panel-labels: off; /* off: default, on: add labels to panels */
+    --label-color: var(--text-muted); /* color of labels */
+    --label-font-weight: 500; /* font weight of labels */
+}
+
+/* color options */
 :root {
-  /* Custom Status Variables */
-  --add-custom-status-text: "Add custom status";
-  --add-custom-status-text-margin: 4px;
-  --add-custom-status-hide: block;
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
 
-  /* Dark Mode Colors */
-  --dark-bg: transparent;
-  --dark-flyout: rgba(30,30,30);
-  --dark-accent: rgb(76, 194, 255);
-  --dark-accent-hovered: rgb(65, 163, 214);
-  --dark-accent-font-color: black;
-  --dark-button: rgb(45,45,45);
-  --dark-button-border: rgb(60, 60, 60);
-  --dark-button-font-color: white;
-  --dark-background-accent: rgba(50,50,50,0.9);
-  --dark-status-panel: rgba(30,30,30,0.4);
+    /* text colors */
+    --text-0: var(--bg-3); /* text on colored elements */
+    --text-1: hsl(226, 64%, 95%); /* other normally white text */
+    --text-2: #cdd6f4; /* headings and important text */
+    --text-3: #bac2de; /* normal text */
+    --text-4: #7f849c; /* icon buttons and channels */
+    --text-5: #585b70; /* muted channels/chats and timestamps */
 
-  /* Light Mode Colors */
-  --light-bg: transparent;
-  --light-flyout: rgb(255, 255, 255);
-  --light-accent: rgb(0, 120, 212);
-  --light-accent-hovered: rgb(0, 94, 167);
-  --light-accent-font-color: white;
-  --light-button: rgb(251,251,251);
-  --light-button-border: rgb(204, 204, 231);
-  --light-button-font-color: black;
-  --light-background-accent: rgba(160,160,160,0.9);
-  --light-status-panel: rgba(255,255,255,0.4);
+    /* background and dark colors */
+    --bg-1: #45475a8e; /* dark buttons when clicked */
+    --bg-2: #3132448e; /* dark buttons */
+    --bg-3: #1818258e; /* spacing, secondary elements */
+    --bg-4: #; /* main background color */
+    --hover: hsla(235, 15%, 53%, 0.1); /* channels and buttons when hovered */
+    --active: hsla(235, 15%, 53%, 0.2); /* channels and buttons when clicked or selected */
+    --active-2: hsla(235, 15%, 53%, 0.3); /* extra state for transparent buttons */
+    --message-hover: hsla(235, 0%, 0%, 0.1); /* messages when hovered */
 
-  /* Titlebar Configuration */
-  --custom-app-top-bar-height: 22px;
-  --title-bar-icon: flex;
+    /* accent colors */
+    --accent-1: var(--purple-1); /* links and other accent text */
+    --accent-2: var(--purple-2); /* small accent elements */
+    --accent-3: var(--purple-3); /* accent buttons */
+    --accent-4: var(--purple-4); /* accent buttons when hovered */
+    --accent-5: var(--purple-5); /* accent buttons when clicked */
+    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #43a25a for default */
+    --dnd: var(--red-2); /* change to #d83a42 for default */
+    --idle: var(--yellow-2); /* change to #ca9654 for default */
+    --streaming: var(--purple-2); /* change to #593695 for default */
+    --offline: var(--text-4); /* change to #83838b for default offline color */
+
+    /* border colors */
+    --border-light: var(--hover); /* general light border color */
+    --border: var(--active); /* general normal border color */
+    --border-hover: var(--accent-2); /* border color of panels when hovered */
+    --button-border: hsl(235, 0%, 100%, 0.1); /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: hsl(343deg, 81%, 80%);
+    --red-2: hsl(343deg, 81%, 75%);
+    --red-3: hsl(343deg, 81%, 75%);
+    --red-4: hsl(343deg, 81%, 70%);
+    --red-5: hsl(343deg, 81%, 65%);
+
+    --green-1: hsl(115deg, 54%, 81%);
+    --green-2: hsl(115deg, 54%, 76%);
+    --green-3: hsl(115deg, 54%, 76%);
+    --green-4: hsl(115deg, 54%, 71%);
+    --green-5: hsl(115deg, 54%, 66%);
+
+    --blue-1: hsl(199deg, 76%, 74%);
+    --blue-2: hsl(199deg, 76%, 69%);
+    --blue-3: hsl(199deg, 76%, 69%);
+    --blue-4: hsl(199deg, 76%, 64%);
+    --blue-5: hsl(199deg, 76%, 59%);
+
+    --yellow-1: hsl(41deg, 86%, 88%);
+    --yellow-2: hsl(41deg, 86%, 83%);
+    --yellow-3: hsl(41deg, 86%, 83%);
+    --yellow-4: hsl(41deg, 86%, 78%);
+    --yellow-5: hsl(41deg, 86%, 73%);
+
+    --purple-1: hsl(267deg, 84%, 86%);
+    --purple-2: hsl(267deg, 84%, 81%);
+    --purple-3: hsl(267deg, 84%, 81%);
+    --purple-4: hsl(267deg, 84%, 76%);
+    --purple-5: hsl(267deg, 84%, 71%);
 }
 
-/* ========================================
-   GLOBAL FONT STYLING
-   ======================================== */
-* {
-    font-family: 'SF Pro Display', 'SF Pro Text', 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+body {
+    --custom-chatbar: separated !important; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
+    --chatbar-height: 56px !important; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
 }
 
-/* ========================================
-   GUILD/SERVER LIST SPACING
-   ======================================== */
-
-/* Reduce space between servers and main content */
-.base_a4d4d9 {
-    grid-template-columns: 48px auto !important;
-}
-
-.sidebar_a4d4d9 {
-    width: 48px !important;
-}
-
-/* Reduce space between servers and divider */
-.wrapper_a7e7a5 {
-    width: 48px !important;
-    padding: 0 !important;
-}
-
-.scroller_a7e7a5 {
-    padding: 8px 0 !important;
-}
-
-.listItem__48528 {
-    margin: 0 0 2px 0 !important;
-    width: 48px !important;
-}
-
-.pill_d49aa4 {
-    left: -4px !important;
-    width: 4px !important;
-}
-
-.guilds_a7e7a5 {
-    width: 48px !important;
-    padding: 0 !important;
-}
-
-/* Make server icons more compact */
-.wrapper_d281dd {
-    width: 36px !important;
-    height: 36px !important;
-    margin: 0 6px !important;
-}
-
-.svg_d281dd, .acronym_d281dd {
-    width: 36px !important;
-    height: 36px !important;
-}
-
-/* Make folders more compact - MORE SPECIFIC TARGETING */
-.folder__17546 {
-    width: 36px !important;
-    height: 36px !important;
-    margin: 0 6px !important;
-}
-
-.folderIconWrapper_bc7085,
-.closedFolderIconWrapper_bc7085,
-.folder__17546 .folderIconWrapper_bc7085,
-.folder__17546 .closedFolderIconWrapper_bc7085 {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-    min-height: 36px !important;
-    max-width: 36px !important;
-    max-height: 36px !important;
-}
-
-/* Target the actual folder icon SVG */
-.folder__17546 svg,
-.folderIconWrapper_bc7085 svg,
-.closedFolderIconWrapper_bc7085 svg {
-    width: 36px !important;
-    height: 36px !important;
-}
-
-/* Make sure folder wrapper matches */
-.listItem__48528:has(.folder__17546) {
-    width: 48px !important;
-}
-
-/* ========================================
-   REMOVE WEIRD HIGHLIGHT BOX (SIMPLIFIED)
-   ======================================== */
-
-/* Just ignore the brown box for now - focus on functionality */
-::selection {
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-::-moz-selection {
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* ========================================
-   COMPACT TITLEBAR
-   ======================================== */
-
-/* Slightly bigger but still compact titlebar */
-.typeWindows_a934d8 {
-    height: 22px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.winButton_a934d8 {
-    width: 32px !important;
-    height: 22px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.winButtonClose_a934d8 {
-    width: 32px !important;
-    height: 22px !important;
-}
-
-/* Compact drag region */
-.titleBar_a934d8 {
-    height: 22px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* ========================================
-   NITRO/SHOP ELEMENT HIDING
-   ======================================== */
-a[data-list-item-id*="nitro"],
-a[data-list-item-id*="shop"] {
-    display: none !important;
-}
-
-/* ========================================
-   SIDEBAR & NAVIGATION
-   ======================================== */
-
-/* Outer sidebar container */
-.sidebarList_c48ade,
-.sidebarListRounded_c48ade {
-    border-radius: 0 !important;
-}
-
-/* Search bar container */
-.searchBar__35e86 {
-    background-color: rgba(0, 0, 0, 0.205) !important;
-    box-shadow: none !important;
-}
-
-/* Search button in sidebar */
-.searchBar__35e86 .button__201d5 {
-    background: linear-gradient(
-        to right,
-        rgba(87, 45, 133, 0.3) 0%,
-        rgba(45, 52, 139, 0.5) 50%,
-        rgba(87, 45, 133, 0.3) 100%
-    ) !important;    
-    transition: all 0.2s ease !important;
-    border-radius: 7px !important;
-}
-
-/* Search button hover effect */
-.searchBar__35e86 .button__201d5:hover {
-    background: linear-gradient(
-        to right,
-        rgba(87, 45, 133, 0.6) 0%,
-        rgba(45, 52, 139, 0.8) 50%,
-        rgba(87, 45, 133, 0.6) 100%
-    ) !important;
-    color: rgb(255, 255, 255) !important;
-    transform: translateY(-0.5px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Button contents */
-.contents__201d5 {
-    background-color: transparent !important;
-}
-
-/* Visual refresh nav adjustments */
-.visual-refresh nav[class*=guilds_] {
-    margin-bottom: unset;
-}
-
-.visual-refresh div[class^="sidebar_"] section[class^="panels_"] {
-    width: calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width) + 1px);
-    left: var(--custom-guild-list-width);
-    bottom: 0px;
-    border-radius: 0px;
-    border: none;
-}
-
-/* ========================================
-   COMPACT CHANNEL LIST
-   ======================================== */
-
-/* Hover voice channel */
-.draggable__55bab:hover {
-    background-color: rgb(106, 85, 85);
-}
-
-/* Unread indicator */
-.unread__2ea32 {
-    width: 5px;
-    height: 4px;
-    border-radius: 50%;
-    left: auto;
-    right: 4px;
-    top: 16px;
-}
-
-/* Selected channel */
-.modeSelected__2ea32 .link__2ea32 {
-    background-color: rgb(92, 52, 52);
-}
-
-/* Channel links */
-.link__2ea32 {
-    padding: 0px 10px 4px 10px;
-    border-radius: 0px !important;
-    
-    &::before {
-        width: 1px;
-        height: 0px;
-        left: 10px;
-        background-color: rgba(255, 255, 255, 0.3);
+.visual-refresh {
+    .bg__960e4 {
+        background: var(--bg-base-primary);
     }
-    
-    &:hover {
-        background-color: rgb(122, 90, 90) !important;
+    .container__01ae2 {
+        background-color: var(--bg-base-primary);
     }
-    
-    .icon__2ea32 {
-        scale: 0.8;
-        margin-top: 2px;
-    }
-    
-    .linkTop__2ea32 {
-        gap: 3px;
+    .container__37e49 {
+        padding: 8px;
     }
 }
 
-/* Channel wrapper */
-.wrapper__2ea32 {
-    margin: -1px;
+/* ascii.css */
+@property --ascii-titles {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: on;
 }
 
-/* Channel names */
-.name__2ea32,
-.overflow__82b15 {
-    font-size: 16px;
-    font-weight: 500;
-    height: 20px;
-    margin: 1px 0 -4px 0;
-    line-height: 1.0;
-}
-
-/* Category wrapper */
-.wrapper__29444 {
-    padding: var(--space-xxs) 6px var(--space-xxs) var(--space-xs);
-    box-sizing: content-box;
-    margin-top: -10px;
-    
-    .mainContent__29444 {
-        flex-direction: row-reverse !important;
-        flex: none !important;
-        gap: 6px;
-    }
-    
-    .icon__29444 {
-        scale: 1.5;
-        margin-top: 3px;
+@container body style(--ascii-titles: on) {
+    h3[data-text-variant='heading-xxl/extrabold'] {
+        font-family: 'asciid';
+        font-size: 50px;
+        font-weight: 400;
     }
 }
 
-/* Channel spine elements */
-.spine__5b40b {
-    display: none !important;
+@property --ascii-loader {
+    syntax: 'off | system24 | apple';
+    inherits: false;
+    initial-value: system24;
 }
 
-.spineBorder__5b40b {
-    left: 7px;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.3) !important;
-    height: 0%;
-}
-
-/* Thread channels */
-.typeThread__2ea32 {
-    margin-left: 10px !important;
-    
-    .link__2ea32 {
-        padding-left: 20px !important;
-    }
-}
-
-/* ========================================
-   MEMBER LIST
-   ======================================== */
-
-/* Member items */
-.member__5d473 {
-    height: 32px !important;
-    padding: var(--space-xxs) var(--space-xs);
-    margin: calc(var(--space-xxs) / 2) var(--space-xxs);
-    
-    &:hover {
-        background: var(--bg-overlay-hover, var(--background-modifier-hover));
-    }
-}
-
-/* Member inner content */
-.memberInner__5d473, 
-.childContainer__91a9d {
-    padding: 0px !important;
-    display: flex !important;
-    align-items: center !important;
-    align-content: center !important;
-    max-width: 100%;
-}
-
-/* Member avatar */
-.avatar__91a9d {
-    scale: 0.75;
-    margin-right: 4px;
-}
-
-/* Member content */
-.content__91a9d {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    gap: 8px;
-}
-
-/* Member inner positioning */
-.memberInner__5d473 {
-    position: absolute;
-    top: calc(0px - var(--space-xxs) / 3);
-    left: var(--space-xxs);
-    max-width: calc(100% - var(--space-sm));
-}
-
-/* Members group */
-.membersGroup_c8ffbb {
-    padding: var(--space-xs) var(--space-xxs) var(--space-xs) var(--space-sm) !important;
-}
-
-/* ========================================
-   MESSAGES & CHAT
-   ======================================== */
-
-/* Message hover animation */
-[data-list-item-id*="message"],
-[class*="messageListItem"],
-[id*="message-"],
-li[class*="messageListItem"] {
-    position: relative;
-    border-radius: var(--wave-border-radius);
-    transition: all 0.3s ease;
-}
-
-[data-list-item-id*="message"]:hover,
-[class*="messageListItem"]:hover,
-li[class*="messageListItem"]:hover {
-    transform: translateX(6px);
-}
-
-/* Message action buttons */
-.actionButton_f8fa06 {
-    background-color: rgba(18, 36, 116, 0.349) !important;
-    border: none !important;
-    box-shadow: none !important;
-    transition: background-color 0.3s, opacity 0.3s !important;
-}
-
-.actionButton_f8fa06:hover {
-    background-color: rgb(32, 34, 136) !important;
-    opacity: 0.7 !important;
-}
-
-/* ========================================
-   CHAT INPUT AREA
-   ======================================== */
-
-/* Chat text area */
-div[class*="channelTextArea"]:not([class*="popout"]):not([class*="modal"]),
-form[class*="form"],
-div[class*="textArea"]:not([class*="popout"]):not([class*="modal"]),
-div[class*="channelTextArea"] [class*="attachButton"],
-div[class*="channelTextArea"] [class*="emojiButton"],
-div[class*="channelTextArea"] div[class*="scrollableContainer"],
-div[class*="channelTextArea"] div[class*="innerContainer"] {
-    background: transparent !important;
-}
-
-/* Text area colors */
-div[class*="channelTextArea"] [class*="textArea"] {
-    color: var(--text-normal) !important;
-}
-
-div[class*="channelTextArea"] [class*="placeholder"] {
-    color: var(--text-muted) !important;
-}
-
-/* Button hover effects */
-div[class*="channelTextArea"] button[class*="attachButton"]:hover,
-div[class*="channelTextArea"] button[class*="emojiButton"]:hover {
-    background-color: var(--background-modifier-hover) !important;
-}
-
-/* Visual refresh chat bar fix */
-.visual-refresh .channelTextArea_f75fb0,
-.visual-refresh .entryPointButtonContainer_f75fb0 {
-    margin-bottom: 3px;
-}
-
-/* ========================================
-   EMBEDS & CODE BLOCKS
-   ======================================== */
-
-/* Embed styling */
-.embedFull__623de {
-    overflow: hidden;
-
-    &::before {
-        top: -1px;
-        content: "";
-        position: absolute;
-        border: inherit;
-        border-left-width: 100vw;
-        max-width: 100%;
-        height: calc(100% + 2px);
-        box-sizing: border-box !important;
-        opacity: 0.25;
-        z-index: 1;
-        border-radius: 0px 8px 8px 0px;
-    }
-
-    .gridContainer__623de {
-        z-index: 2;
-    }
-}
-
-.withAccentColor__60fa3 {
-    background: color-mix(in srgb, var(--background-surface-high), var(--__accent-color) 25%);
-}
-
-/* Transparent code blocks */
-.nonVisualMediaItem_f4758a,  
-.mosaicItem__6c706,  
-.mosaicItemContent__6c706,  
-.container__4d95d,  
-.textContainer__4d95d,  
-.scrollbarGhostHairline__506b3,  
-.codeView__4d95d {  
-    background-color: rgba(21, 28, 32, 0.212) !important;
-    border-radius: 15px !important;
-    border: none !important;
-    user-select: text !important;
-    pointer-events: auto !important;
-}  
-
-/* Transparent syntax highlighting */  
-.hljs {  
-    background: rgba(6, 4, 26, 0.432) !important;  
-    user-select: text !important;
-}
-
-/* Transparent footer */  
-.footer__4d95d {  
-    background-color: rgba(21, 28, 32, 0.212) !important;  
-    border: none !important;
-}
-
-/* ========================================
-   MODALS & POPUPS
-   ======================================== */
-
-/* Modal background with glass effect */
-.modal_ca6911 {
-    background: rgba(88, 85, 138, 0.192) !important;
-    backdrop-filter: blur(10px) !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Modal header */
-.modal_ca6911 .header__49fc1 {
-    background: transparent !important;
-    border-bottom: none !important;
-}
-
-/* Modal content */
-.modal_ca6911 .content__49fc1 {
-    background: transparent !important;
-}
-
-/* Modal scrollbar */
-.modal_ca6911 .scrollerBase_d125d2::-webkit-scrollbar {
-    width: 6px;
-}
-
-.modal_ca6911 .scrollerBase_d125d2::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-}
-
-.modal_ca6911 .scrollerBase_d125d2::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* Layer background */
-.layer__960e4 {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.baseLayer__960e4 {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-}
-
-/* ========================================
-   CONTEXT MENUS
-   ======================================== */
-
-/* Reduce context menu padding */
-.layer_da8173 > .menu_c1e9c4 {
-    min-width: 0;
-    width: 171px !important;
-    
-    .scroller_c1e9c4 {
-        margin: -4px;
-    }
-    
-    .separator_c1e9c4 {
-        margin: 1px 8px !important;
-    }
-    
-    .wrapper_f563df {
-        padding: 0px !important;
-        margin: 1px;
-    }
-    
-    .item_c1e9c4 {
-        min-height: 0;
-        padding: 4px 8px;
-    }
-    
-    .icon_f563df {
-        width: 18px;
-    }
-    
-    .button_f563df {
-        width: 36px;
-        height: 36px;
-        border-radius: 4px;
-    }
-    
-    .icon_c1e9c4 {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .iconContainer_c1e9c4 {
+@container body style(--ascii-loader: system24) {
+    .content_a2f514 {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        gap: 20px;
+    }
+    .content_a2f514 > .spinner_a2f514 {
+        display: none;
+    }
+    .content_a2f514::before {
+        display: block;
+        content: '                    __                ___  __ __\A    _______  _______/ /____  ____ ___ |__ \\/ // /\A   / ___/ / / / ___/ __/ _ \\/ __ `__ \\__/ / // /_\A  (__  ) /_/ (__  ) /_/  __/ / / / / / __/__  __/\A/____/\\__, /____/\\__/\\___/_/ /_/ /_/____/ /_/   \A      /____/                                     ';
+        font-size: 18px;
+        font-family: monospace;
+        white-space: pre;
+        line-height: 1.2;
+        background: linear-gradient(to right, var(--brand-360) 0%, var(--background-accent) 25%, var(--background-accent) 75%, var(--brand-360) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: textShine 1.5s linear infinite reverse;
+    }
+    .text_a2f514 {
+        position: static;
+    }
+
+    @keyframes textShine {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        50.0001% {
+            background-position: -100%, 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
 }
 
-/* ========================================
-   SETTINGS MODAL
-   ======================================== */
-
-/* Settings modal styling */
-.standardSidebarView__23e6b {
-    position: absolute;
-    width: 60vw;
-    max-width: 60vw !important;
-    height: 75vh;
-    justify-self: center;
-    align-self: center;
-    display: flex;
-    border-radius: 10px;
-    overflow: hidden;
-    border: rgba(255, 255, 255, 0.1) 1px solid;
-    background-color: rgba(30, 30, 30, 0.5) !important;
-    backdrop-filter: blur(10px) !important;
+@container body style(--ascii-loader: apple) {
+    .content_a2f514 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        position: static;
+    }
+    .content_a2f514 > .spinner_a2f514 {
+        display: none;
+    }
+    .content_a2f514::before {
+        content: '';
+        display: block;
+        width: 48px; /* Discord's default spinner size */
+        height: 48px;
+        background-image: url('https://raw.githubusercontent.com/sentry1000/SentryCord/refs/heads/main/appleloading.gif');
+        background-size: contain; /* Fits the entire image within the 48x48 box */
+        background-repeat: no-repeat;
+        background-position: center;
+        /* Alternative sizing - try one of these if you want different sizes */
+        /* width: 40px; height: 40px; */ /* Smaller option */
+        /* width: 56px; height: 56px; */ /* Larger option */
+    }
+    .text_a2f514 {
+        position: static;
+    }
 }
 
-/* Settings content region */
-.standardSidebarView__23e6b .contentRegion__23e6b {
-    width: calc(60vw - 270px);
-    display: block;
-    flex: none;
-    background-color: transparent !important;
+/* colors.css */
+@container root style(--colors: on) {
+    #app-mount .wrapper__44b0c,
+    #app-mount .container__1ce5d {
+        --online-2: var(--online);
+        --dnd-2: var(--dnd);
+        --idle-2: var(--idle);
+        --offline-2: var(--offline);
+        --streaming-2: var(--streaming);
+    }
 }
 
-/* Settings tools container */
-.standardSidebarView__23e6b .toolsContainer__23e6b {
-    margin: 0;
-    position: absolute;
-    right: 0px;
-    top: 0;
-    flex: none;
-    background-color: transparent !important;
-    padding: 0px;
-    height: 46px;
-    width: 100%;
-    box-shadow: var(--elevation-low);
+/* panel-labels.css */
+body {
+    --label-color: var(--text-muted);
+    --label-hover-color: var(--brand-360);
+    --label-font-weight: 500;
 }
 
-/* Settings tools */
-.standardSidebarView__23e6b .tools__23e6b {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 5000;
+@property --panel-labels {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: on;
 }
 
-/* Close button */
-.standardSidebarView__23e6b .closeButton_c2b141 {
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    height: 25px !important;
-    width: 25px !important;
-    border: none;
-    flex: none;
+@container body style(--panel-labels: on) {
+    .visual-refresh {
+        .guilds_c48ade,
+        .panels_c48ade,
+        .sidebarList_c48ade,
+        .subtitleContainer_f75fb0,
+        .messagesWrapper__36d07,
+        .channelTextArea_f75fb0,
+        .content_f75fb0 > .membersWrap_c8ffbb,
+        .container_c8ffbb,
+        .container__133bf > .container__9293f,
+        .peopleColumn__133bf,
+        .nowPlayingColumn__133bf,
+        .container__01ae2 > .container__9293f,
+        .callContainer_cb9592 {
+            &::after {
+                display: block;
+                color: var(--label-color);
+                font-weight: var(--label-font-weight);
+                position: absolute;
+                top: -10px;
+                left: 8px;
+                background-color: var(--bg-base-primary);
+                padding: 0 4px;
+                z-index: 100;
+                font-size: 16px;
+                transition: color var(--border-hover-transition);
+            }
+
+            &:hover::after {
+                color: var(--label-hover-color);
+            }
+        }
+
+        .guilds_c48ade::after {
+            content: 'nav';
+        }
+        .panels_c48ade::after {
+            content: 'user';
+        }
+        .sidebarList_c48ade::after {
+            content: 'channels';
+        }
+        .subtitleContainer_f75fb0::after {
+            content: 'channel';
+        }
+        .messagesWrapper__36d07::after {
+            content: 'chat';
+        }
+        .channelTextArea_f75fb0::after {
+            content: 'input';
+        }
+        .container_c8ffbb::after,
+        .content_f75fb0 > .membersWrap_c8ffbb::after {
+            content: 'members';
+        }
+        .container__133bf > .container__9293f:after {
+            content: 'friends';
+        }
+        .peopleColumn__133bf::after {
+            content: 'list';
+        }
+        .nowPlayingColumn__133bf::after {
+            content: 'activity';
+        }
+        .container__01ae2 > .container__9293f::after {
+            content: 'thread';
+        }
+        .callContainer_cb9592::after {
+            content: 'vc';
+        }
+
+        .content_f75fb0 > .membersWrap_c8ffbb,
+        .panels_c48ade,
+        .sidebar_c48ade,
+        .sidebarList_c48ade,
+        .chat_f75fb0,
+        .page_c48ade,
+        .channelTextArea_f75fb0,
+        .container__133bf,
+        .container_c8ffbb,
+        .guilds_c48ade,
+        .peopleColumn__133bf,
+        .tabBody__133bf,
+        .container__01ae2,
+        .chatContent_f75fb0 {
+            overflow: visible;
+        }
+        .page_c48ade,
+        .tabBody__133bf {
+            min-height: 0;
+        }
+        .peopleColumn__133bf {
+            min-width: 0;
+        }
+        .sidebarList_c48ade,
+        .container_c8ffbb,
+        .peopleColumn__133bf,
+        .nowPlayingColumn__133bf {
+            position: relative;
+        }
+
+        .scroller__36d07 {
+            top: 8px;
+        }
+        .membersWrap_c8ffbb,
+        .guilds_c48ade,
+        .sidebarList_c48ade {
+            padding-top: 8px;
+        }
+        .membersWrap_c8ffbb {
+            height: calc(100% - 8px);
+        }
+
+        .scroller_ef3116 {
+            padding-top: calc(var(--custom-guild-list-padding) - 8px);
+        }
+
+        .animatedContainer_f37cb1,
+        .headerGlass_f37cb1 {
+            left: 8px;
+            right: 8px;
+            width: auto;
+        }
+        .header_f37cb1 {
+            margin: 0 8px;
+        }
+        .container__2637a {
+            overflow: hidden;
+        }
+
+        .headerEllipseForeground_f37cb1 {
+            display: none;
+        }
+
+        .callContainer_cb9592 {
+            padding: 8px;
+        }
+
+        .messagesWrapper__36d07 {
+            mask: none !important;
+        }
+    }
 }
 
-.standardSidebarView__23e6b .closeButton_c2b141 > svg {
-    margin: 9px 0px 0px 9px;
-    width: 18px !important;
-    height: 18px !important;
-    overflow: visible;
+/* spotify-bar.css */
+@property --custom-spotify-bar {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: on;
 }
 
-.standardSidebarView__23e6b .closeButton_c2b141 > svg > path {
-    margin-left: 20px;
-    d: path("M0.00380648 0.00268555H1.50315H1.55C1.93069 0.0202563 2.31724 0.19596 2.5808 0.47123L6.00117 3.8916L9.4684 0.47123C9.86666 0.125678 10.1361 0.0143984 10.4992 0.00268555H11.9985V1.50203C11.9985 1.92957 11.9458 2.32784 11.6237 2.62653L8.20333 6.0469L11.5768 9.42042C11.858 9.70155 11.9985 10.0998 11.9985 10.4981V11.9974H10.4992C10.1009 11.9974 9.70267 11.8569 9.42154 11.5757L6.00117 8.15535L2.5808 11.5757C2.29967 11.8569 1.90141 11.9974 1.50315 11.9974H0.00380648V10.4981C0.00380648 10.0998 0.14437 9.70155 0.425496 9.42042L3.84587 6.0469L0.425496 2.62653C0.109228 2.33369 -0.0313351 1.92372 0.00380648 1.50203V0.00268555Z");
+@container body style(--custom-spotify-bar: on) {
+    .visual-refresh {
+        /* text-like spotify progress bar */
+        #vc-spotify-progress-bar {
+            margin: 8px 0 0 0;
+        }
+        .vc-spotify-button-row {
+            margin-top: 8px;
+        }
+        #app-mount #vc-spotify-progress-bar .bar_a562c8 {
+            height: 22px !important;
+            top: 0 !important;
+            background-color: var(--background-surface-high);
+        }
+        #app-mount #vc-spotify-progress-bar .barFill_a562c8 {
+            height: 22px !important;
+        }
+        #vc-spotify-progress-bar .vc-spotify-time-left,
+        #vc-spotify-progress-bar .vc-spotify-time-right {
+            z-index: 1;
+            top: 0;
+            margin-top: 0;
+            mix-blend-mode: difference;
+            font-size: 16px;
+            line-height: 22px;
+            pointer-events: none;
+        }
+        #vc-spotify-progress-bar .vc-spotify-time-left {
+            left: 6px;
+        }
+        #vc-spotify-progress-bar .vc-spotify-time-right {
+            right: 6px;
+        }
+        #vc-spotify-progress-bar .grabber_a562c8 {
+            visibility: hidden;
+        }
+    }
 }
 
-.standardSidebarView__23e6b .keybind_c2b141 {
-    display: none;
+/* unrounding.css */
+@property --unrounding {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: on;
 }
 
-/* Settings sidebar region */
-.standardSidebarView__23e6b .sidebarRegion__23e6b {
-    flex: none;
-    background-color: transparent !important;
+@container body style(--unrounding: on) {
+    *,
+    *::before,
+    *::after {
+        border-radius: 0 !important;
+    }
+
+    .svg_cc5dd2 > mask,
+    .svg__44b0c > rect,
+    .svg__44b0c > circle,
+    .svg__44b0c > g,
+    .svg__44b0c rect[mask='url(#:rhi:)'],
+    .avatar__20a53 .status_a423bd {
+        display: none;
+    }
+
+    .mask__68edb > foreignObject,
+    .svg__44b0c > foreignObject,
+    .svg__2338f > foreignObject {
+        mask: none;
+    }
+
+    .wrapper__44b0c,
+    .container__1ce5d {
+        --online-2: #43a25a;
+        --dnd-2: #d83a41;
+        --idle-2: #ca9654;
+        --offline-2: #82838b;
+        --streaming-2: #9147ff;
+    }
+	
+    .wrapper__44b0c:has(rect)::after,
+    .container__1ce5d:has(.status_a423bd)::after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        bottom: -4px;
+        right: -4px;
+        border: 2px solid var(--background-base-lower);
+    }
+    .wrapper__44b0c:has(rect[fill='#43a25a'])::after,
+    .container__1ce5d:has(.status_a423bd[style='background-color: rgb(67, 162, 90);'])::after {
+        background: var(--online-2) !important;
+    }
+    .wrapper__44b0c:has(rect[fill='#d83a42'])::after {
+        background: var(--dnd-2) !important;
+    }
+    .wrapper__44b0c:has(rect[fill='#ca9654'])::after {
+        background: var(--idle-2) !important;
+    }
+    .wrapper__44b0c:has(rect[fill='#82838b'])::after {
+        background: var(--offline-2) !important;
+    }
+    .wrapper__44b0c:has(rect[fill='#9147ff'])::after {
+        background: var(--streaming-2);
+    }
+
+    .lowerBadge_cc5dd2 {
+        border: 2px solid var(--background-base-lower);
+        bottom: -4px;
+        right: -4px;
+    }
+    .upperBadge_cc5dd2 {
+        border: 2px solid var(--background-base-lower);
+        top: -4px;
+        right: -4px;
+    }
+    .folderGroup__48112.isExpanded__48112 > .stack_dbd263 {
+        overflow: visible !important;
+    }
+
+    .slider__87bf1 > rect[rx='10'] {
+        rx: 0 !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 0 !important;
+    }
 }
 
-/* Settings sidebar */
-.standardSidebarView__23e6b .sidebar__23e6b {
-    width: 270px;
-    padding: 0;
-    overflow: visible !important;
-    background-color: transparent !important;
+:root {
+    /* Main Accent Color
+       Lighter Blue: #87CEFA */
+    --accent-1: #87CEFA;
+    --accent-2: #87CEFA;
+    --accent-3: #87CEFA;
+    /* Blue Base Colors */
+    --blue-1: #87CEFA;
+    --blue-2: #87CEFA;
+    --blue-3: #87CEFA;
+    /* Main UI colors */
+    --background-primary: #1e1e1e;
+    --background-secondary: #212121;
+    --background-tertiary: #191919;
+    --background-floating: rgba(30, 30, 30, 0.9);
+    --background-modifier-hover: rgba(79, 84, 92, 0.1);
+    --background-modifier-active: rgba(79, 84, 92, 0.15);
+    --background-modifier-selected: rgba(79, 84, 92, 0.2);
+    /* Font colors */
+    --text-normal: #dcdcdc;
+    --text-muted: #afafaf;
+    --header-primary: #ffffff;
+    --header-secondary: #dcdcdc;
+    /* Other colors */
+    --online-1: #3ba55c;
+    --online-2: #3ba55c;
+    --dnd-1: #ed4245;
+    --dnd-2: #ed4245;
+    --idle-1: #faa81a;
+    --idle-2: #faa81a;
+    --offline-1: #747f8d;
+    --offline-2: #747f8d;
+    --settings-color: #555555;
+    /* Transparent colors */
+    --mention-1: rgba(135, 206, 250, 0.1);
+    --mention-2: rgba(135, 206, 250, 0.2);
+    --reply-1: rgba(135, 206, 250, 0.2);
+    /* Transparency */
+    --transparency-1: linear-gradient(to right, rgba(135, 206, 250, 0), rgba(135, 206, 250, 0.2) 25%, rgba(135, 206, 250, 0.2) 75%, rgba(135, 206, 250, 0));
 }
 
-.standardSidebarView__23e6b .sidebar__23e6b::before {
-    content: "Settings";
-    font-size: 16px;
-    font-weight: 600;
-    z-index: 100;
-    height: 46px;
-    align-content: center;
-    text-align: center;
-    width: 278px;
-    position: fixed;
-    pointer-events: none;
-    background-color: transparent !important;
-    box-shadow: var(--elevation-low);
-    color: white;
+.theme-dark {
+    --background-base-lower: #212121;
+    --background-base: #1e1e1e;
+    --background-base-higher: #191919;
+    --background-base-highest: #141414;
+    --background-base-upper: #242424;
 }
 
-.standardSidebarView__23e6b .side_b3f026 {
-    overflow: visible !important;
-    padding: 60px 8px 60px 16px;
+.theme-light {
+    --background-base-lower: #f2f2f2;
+    --background-base: #ffffff;
+    --background-base-higher: #f9f9f9;
+    --background-base-highest: #fafafa;
+    --background-base-upper: #ececec;
 }
 
-/* ========================================
-   STREAMING & VIDEO
-   ======================================== */
-
-/* Resize Handle */
-.resizeHandle__01ae2 {
-    background: rgba(0, 0, 0, 0.664);
-}
-
-/* Stream Container */
-.container__01ae2,
-.container__f75fb0 {
-    border-radius: 0 !important;
-    overflow: hidden;
-}
-
-/* Video Container */
-.container__9293f {
-    background-color: rgba(0, 0, 0, 0.24) !important;
-    box-shadow: none !important;
-}
-
-/* Chat Box */
-.chat_f75fb0 {
-    border-radius: 0 !important;
-}
-
-/* Toolbar Gradient */
-div.children__9293f.showToolbar__9293f::after {
-    background: transparent !important;
-}
-
-/* Topic Text */
-.topic__6ec1a span,
-.topic__6ec1a {
-    color: #ffffffc7 !important;          
-}
-
-/* ========================================
-   GIF PICKER
-   ======================================== */
-
-/* Full sized gif picker */
-[class*='layerContainer_'] [class*='positionLayer__'] {
-    height: 100% !important;
-}
-
-[class*='layerContainer_'] [class*='positionLayer__'] [class*='drawerSizingWrapper__'] {
-    top: 3.5em !important;
-    height: calc(100% - 9em);
-}
-
-/* ========================================
-   LAYOUT & STRUCTURAL
-   ======================================== */
-
-/* Base layout adjustments */
-[class*='base_'] > [class*='content_'] {
-    margin: 0 10px 10px 0;
-}
-
-[class*='base_'] > [class*='content_'] [class*='page_'] {
-    border: 1px solid var(--app-border-frame);
-    border-left: none;
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-}
-
-[class*='base_'] > [class*='content_'] [class*='sidebar_']::after {
-    display: none;
-}
-
-[class*='base_'] > [class*='content_'] [class*='sidebar_'] [class*='sidebarList_'] {
-    border-bottom: 1px solid var(--app-border-frame);
-    border-bottom-left-radius: var(--radius-md);
-}
-
-[class*='base_'] > [class*='content_'] [class*='chat_'], 
-[class*='base_'] > [class*='content_'] [class*='callContainer_cb9592'] {
-    border: none !important;
-}
-
-/* ========================================
-   LOADING SCREEN
-   ======================================== */
-
-/* Custom loading animation */
-.content_a2f514 {
-    display: flex;
-    flex-direction: column;
-}
-
-.content_a2f514 > .spinner_a2f514 { 
-    display: none;
-}
-
-.content_a2f514:before {
-    display: block;
-    height: 128px;
-    position: relative;
-    content: url(https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/static/shiggy.gif);
-    image-rendering: pixelated;
-    align-content: center;
-    scale: 3.125;
-    margin-bottom: 96px;
-}
-
-/* ========================================
-   ROLES & PILLS
-   ======================================== */
-
-/* Role pills */
-.role_dfa8b6.pill_dfa8b6 {
-    position: relative;
-    background: none;
-    border: none;
-    padding-left: 28px;
-}
-
-.role_dfa8b6.pill_dfa8b6 > span {
-    z-index: 1;
-}
-
-.role_dfa8b6.pill_dfa8b6 .roleRemoveButton_dfa8b6 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    margin: 0 !important;
-}
-
-.role_dfa8b6.pill_dfa8b6 .roleCircle__4f569 {
-    margin: 6px 8px;
-}
-
-.role_dfa8b6.pill_dfa8b6 .roleCircle__4f569::before {
+.wrapper__44b0c:has(rect)::after,
+.container__1ce5d:has(.status_a423bd)::after {
     content: '';
     display: block;
     position: absolute;
-    background-color: inherit;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    border-radius: var(--radius-xs);
-    filter: brightness(1.1);
-    opacity: 0.25;
+    height: 8px;
+    width: 8px;
+    bottom: -4px;
+    right: -4px;
+    border: 2px solid var(--background-base-lower);
 }
 
-/* ========================================
-   AVATAR MODIFICATIONS
-   ======================================== */
-
-/* Remove colored borders and glows from avatars */
-.avatar_d3a39b,
-.avatar__91a9d,
-.avatar_edb6e0,
-.avatar__1f855,
-.wrapper_edb6e0,
-.avatarWrapper_b4c554 {
-    background: black !important;
-    border-color: black !important;
-    filter: none !important;
-    box-shadow: none !important;
+.wrapper__44b0c:has(rect[fill='#43a25a'])::after,
+.container__1ce5d:has(.status_a423bd[style='background-color: rgb(67, 162, 90);'])::after {
+    background: var(--online-2) !important;
 }
 
-/* Avatar SVG fallback */
-.avatar_edb6e0 > svg,
-.avatar__1f855 > svg {
-    fill: black !important;
+.wrapper__44b0c:has(rect[fill='#d83a42'])::after {
+    background: var(--dnd-2) !important;
 }
 
-/* ========================================
-   MISCELLANEOUS
-   ======================================== */
-
-/* Link styling */
-.anchor_edefb8 {
-    color: #00b0f4 !important;
+.wrapper__44b0c:has(rect[fill='#ca9654'])::after {
+    background: var(--idle-2) !important;
 }
+
+.wrapper__44b0c:has(rect[fill='#82838b'])::after {
+    background: var(--offline-2) !important;
+}
+
+.wrapper__44b0c:has(rect[fill='#9147ff'])::after {
+    background: var(--accent-2) !important;
+}
+
+.wrapper__44b0c::after,
+.container__1ce5d::after {
+    display: none !important;
+}
+

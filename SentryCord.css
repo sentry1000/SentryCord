@@ -1,7 +1,7 @@
 /**
  * @name SentryCord
  * @author Sentry
- * @version 2.00
+ * @version 2.1
  * @description A fluent mica Discord theme inspired by Apple's MacOS.
 **/
 
@@ -12,7 +12,6 @@
 @import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
 @import url("https://raw.githubusercontent.com/acheronx0577/Transparent-Activity-Discord/refs/heads/main/Transparent%20Activity%20Discord.css");
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
@@ -70,7 +69,7 @@ body {
     /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
     --transparency-tweaks: on; /* off: no changes, on: remove some elements for better transparency */
     --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
-    --panel-blur: on; /* off: no changes, on: blur the background of panels */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
     --blur-amount: 12px; /* amount of blur */
     --bg-floating: var(--bg-5); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
 
@@ -104,22 +103,22 @@ body {
     --text-5: #585b70; /* muted channels/chats and timestamps */
 
     /* background and dark colors */
-    --bg-1: #45475a8e; /* dark buttons when clicked */
-    --bg-2: #3132448e; /* dark buttons */
-    --bg-3: #1818258e; /* spacing, secondary elements */
+    --bg-1: #2e2e2ecb; /* dark buttons when clicked */
+    --bg-2: #0f0f0f65; /* dark buttons */
+    --bg-3: #0f0f0f65; /* spacing, secondary elements */
     --bg-4: #; /* main background color */
     --hover: hsla(235, 15%, 53%, 0.1); /* channels and buttons when hovered */
     --active: hsla(235, 15%, 53%, 0.2); /* channels and buttons when clicked or selected */
-    --active-2: hsla(235, 15%, 53%, 0.3); /* extra state for transparent buttons */
+    --active-2: hsla(0, 0%, 0%, 0.3); /* extra state for transparent buttons */
     --message-hover: hsla(235, 0%, 0%, 0.1); /* messages when hovered */
 
     /* accent colors */
-    --accent-1: var(--purple-1); /* links and other accent text */
-    --accent-2: var(--purple-2); /* small accent elements */
-    --accent-3: var(--purple-3); /* accent buttons */
-    --accent-4: var(--purple-4); /* accent buttons when hovered */
-    --accent-5: var(--purple-5); /* accent buttons when clicked */
-    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+    --accent-1: var(--blue-4); /* links and other accent text */
+    --accent-2: var(--blue-1); /* small accent elements */
+    --accent-3: var(--blue-3); /* accent buttons */
+    --accent-4: var(--blue-4); /* accent buttons when hovered */
+    --accent-5: var(--blue-5); /* accent buttons when clicked */
+    --accent-new: var(--accent-4); /* stuff that's normally red like mute/deafen buttons */
     --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
     --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
     --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
@@ -129,7 +128,7 @@ body {
     --online: var(--green-2); /* change to #43a25a for default */
     --dnd: var(--red-2); /* change to #d83a42 for default */
     --idle: var(--yellow-2); /* change to #ca9654 for default */
-    --streaming: var(--purple-2); /* change to #593695 for default */
+    --streaming: var(--blue-3); /* change to #593695 for default */
     --offline: var(--text-4); /* change to #83838b for default offline color */
 
     /* border colors */
@@ -151,11 +150,11 @@ body {
     --green-4: hsl(115deg, 54%, 71%);
     --green-5: hsl(115deg, 54%, 66%);
 
-    --blue-1: hsl(199deg, 76%, 74%);
+    --blue-1: hsl(214, 100%, 42%);
     --blue-2: hsl(199deg, 76%, 69%);
-    --blue-3: hsl(199deg, 76%, 69%);
+    --blue-3: hsl(199, 100%, 69%);
     --blue-4: hsl(199deg, 76%, 64%);
-    --blue-5: hsl(199deg, 76%, 59%);
+    --blue-5: hsl(199, 100%, 35%);
 
     --yellow-1: hsl(41deg, 86%, 88%);
     --yellow-2: hsl(41deg, 86%, 83%);
@@ -585,98 +584,69 @@ body {
     }
 }
 
-:root {
-    /* Main Accent Color
-       Lighter Blue: #87CEFA */
-    --accent-1: #87CEFA;
-    --accent-2: #87CEFA;
-    --accent-3: #87CEFA;
-    /* Blue Base Colors */
-    --blue-1: #87CEFA;
-    --blue-2: #87CEFA;
-    --blue-3: #87CEFA;
-    /* Main UI colors */
-    --background-primary: #1e1e1e;
-    --background-secondary: #212121;
-    --background-tertiary: #191919;
-    --background-floating: rgba(30, 30, 30, 0.9);
-    --background-modifier-hover: rgba(79, 84, 92, 0.1);
-    --background-modifier-active: rgba(79, 84, 92, 0.15);
-    --background-modifier-selected: rgba(79, 84, 92, 0.2);
-    /* Font colors */
-    --text-normal: #dcdcdc;
-    --text-muted: #afafaf;
-    --header-primary: #ffffff;
-    --header-secondary: #dcdcdc;
-    /* Other colors */
-    --online-1: #3ba55c;
-    --online-2: #3ba55c;
-    --dnd-1: #ed4245;
-    --dnd-2: #ed4245;
-    --idle-1: #faa81a;
-    --idle-2: #faa81a;
-    --offline-1: #747f8d;
-    --offline-2: #747f8d;
-    --settings-color: #555555;
-    /* Transparent colors */
-    --mention-1: rgba(135, 206, 250, 0.1);
-    --mention-2: rgba(135, 206, 250, 0.2);
-    --reply-1: rgba(135, 206, 250, 0.2);
-    /* Transparency */
-    --transparency-1: linear-gradient(to right, rgba(135, 206, 250, 0), rgba(135, 206, 250, 0.2) 25%, rgba(135, 206, 250, 0.2) 75%, rgba(135, 206, 250, 0));
+[data-list-item-id*="message"],
+[class*="messageListItem"],
+[id*="message-"],
+li[class*="messageListItem"] {
+    position: relative;
+    border-radius: var(--wave-border-radius);
+    transition: all 0.3s ease;
+}
+[data-list-item-id*="message"]:hover,
+[class*="messageListItem"]:hover,
+li[class*="messageListItem"]:hover {
+    transform: translateX(6px);
 }
 
-.theme-dark {
-    --background-base-lower: #212121;
-    --background-base: #1e1e1e;
-    --background-base-higher: #191919;
-    --background-base-highest: #141414;
-    --background-base-upper: #242424;
+/* Settings window container */
+.layer__960e4 + .layer__960e4 {
+    border-radius: 10px !important;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--border-strong);
+    width: 1100px !important;
+    height: 80vh !important;
+    margin: auto !important;
+    padding: 0 !important;
+    background: var(--background-secondary) !important;
+    z-index: 1001;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 1 !important; /* always visible */
+    transform: scale(1) !important;
 }
 
-.theme-light {
-    --background-base-lower: #f2f2f2;
-    --background-base: #ffffff;
-    --background-base-higher: #f9f9f9;
-    --background-base-highest: #fafafa;
-    --background-base-upper: #ececec;
+/* Dim the rest of Discord only when settings are open */
+.layer__960e4 + .layer__960e4 ~ .baseLayer__960e4 {
+    opacity: 0.2 !important;
+    transform: unset !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    transition: background 0.25s ease, opacity 0.25s ease;
 }
 
-.wrapper__44b0c:has(rect)::after,
-.container__1ce5d:has(.status_a423bd)::after {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 8px;
-    width: 8px;
-    bottom: -4px;
-    right: -4px;
-    border: 2px solid var(--background-base-lower);
+/* Main context menu (right-click menus) */
+[role="menu"] {
+    background: rgba(30, 30, 30, 0.75) !important; /* dark semi-transparent */
+    backdrop-filter: blur(12px) !important;        /* Mica blur */
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: background 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.wrapper__44b0c:has(rect[fill='#43a25a'])::after,
-.container__1ce5d:has(.status_a423bd[style='background-color: rgb(67, 162, 90);'])::after {
-    background: var(--online-2) !important;
+/* Submenus */
+[role="menu"] [role="menu"] {
+    background: rgba(30, 30, 30, 0.8) !important; /* slightly stronger */
 }
 
-.wrapper__44b0c:has(rect[fill='#d83a42'])::after {
-    background: var(--dnd-2) !important;
+/* Menu items */
+[role="menuitem"] {
+    background: transparent !important;
+    color: var(--text-normal) !important;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-.wrapper__44b0c:has(rect[fill='#ca9654'])::after {
-    background: var(--idle-2) !important;
+/* Hover effect */
+[role="menuitem"]:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+    color: var(--header-primary) !important;
 }
-
-.wrapper__44b0c:has(rect[fill='#82838b'])::after {
-    background: var(--offline-2) !important;
-}
-
-.wrapper__44b0c:has(rect[fill='#9147ff'])::after {
-    background: var(--accent-2) !important;
-}
-
-.wrapper__44b0c::after,
-.container__1ce5d::after {
-    display: none !important;
-}
-

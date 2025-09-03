@@ -1,9 +1,29 @@
  /**
  * @name SentryCord
  * @author Sentry
- * @version 2.2
+ * @version 3.0
  * @description A fluent mica Discord theme inspired by Apple's macOS.
 **/
+
+/*
+                    'c.
+                 ,xNMM.
+               .OMMMMo
+               OMMM0,
+     .;loddo:' loolloddol;.
+   cKMMMMMMMMMMNWMMMMMMMMMM0:
+ .KMMMMMMMMMMMMMMMMMMMMMMMWd.
+ XMMMMMMMMMMMMMMMMMMMMMMMX.
+;MMMMMMMMMMMMMMMMMMMMMMMM:
+:MMMMMMMMMMMMMMMMMMMMMMMM:
+.MMMMMMMMMMMMMMMMMMMMMMMMX.
+ kMMMMMMMMMMMMMMMMMMMMMMMMWd.
+ .XMMMMMMMMMMMMMMMMMMMMMMMMMMk
+  .XMMMMMMMMMMMMMMMMMMMMMMMMK.
+    kMMMMMMMMMMMMMMMMMMMMMMd
+     ;KMMMMMMMWXXWMMMMMMMk.
+       .cooc,.    .,coo:.
+*/
 
 /* ========================================
    IMPORTS
@@ -15,6 +35,7 @@
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url("https://raw.githubusercontent.com/acheronx0577/Better-Compact-Command-Menu-With-Smooth-Transition/refs/heads/main/Better%20Compact%20Command%20Menu%20With%20Smooth%20Transition.css");
 
 /* ========================================
    ROOT VARIABLES & THEME CONFIGURATION
@@ -57,7 +78,7 @@ body {
     --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
     --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
     --custom-dms-background: image; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
-    --dms-background-image-url: url('https://raw.githubusercontent.com/sentry1000/SentryCord/refs/heads/main/applelogo4.png'); /* url of the background image */
+    --dms-background-image-url: url('https://raw.githubusercontent.com/sentry1000/SentryCord/refs/heads/main/whiteapplelogo.png'); /* url of the background image */
     --dms-background-image-size: cover; /* size of the background image (css background-size property) */
     --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
 
@@ -106,7 +127,7 @@ body {
     --bg-1: #2e2e2ecb; /* dark buttons when clicked */
     --bg-2: #0f0f0f65; /* dark buttons */
     --bg-3: #0f0f0f65; /* spacing, secondary elements */
-    --bg-4: #0f0f0f56; /* main background color */
+    --bg-4: #0f0f0f00; /* main background color */
     --hover: hsla(235, 15%, 53%, 0.1); /* channels and buttons when hovered */
     --active: hsla(235, 15%, 53%, 0.2); /* channels and buttons when clicked or selected */
     --active-2: hsla(0, 0%, 0%, 0.3); /* extra state for transparent buttons */
@@ -820,5 +841,209 @@ li[class*="messageListItem"]:hover {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     filter: none !important;
+}
+
+/* ========================================
+   SELECTIVE PANEL TRANSPARENCY ADJUSTMENT
+   ======================================== */
+
+/* Chat panel with proper rounded corner masking */
+.chatContent_f75fb0,
+.messagesWrapper__36d07,
+.content_f75fb0 {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    overflow: hidden !important;
+}
+
+/* Fix for rounded corner gaps */
+.chat_f75fb0,
+.chatContent_f75fb0 {
+    border-radius: inherit !important;
+    overflow: hidden !important;
+}
+
+/* Ensure the background fills the entire rounded area */
+.chatContent_f75fb0::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 15, 0.15);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+/* Add subtle background to member list panel */
+.membersWrap_c8ffbb,
+.container_c8ffbb {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Add subtle background to server list panel */
+.guilds_c48ade {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Add subtle background to channel list panel */
+.sidebar_c48ade,
+.panels_c48ade {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Add subtle background to direct messages area */
+.privateChannels_c48ade {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Channel header panel (App Discovery, channel info) */
+.container_f75fb0,
+.title_f75fb0,
+.headerBar_f75fb0,
+.topic_f75fb0,
+.subtitleContainer_f75fb0 {
+    background: rgba(15, 15, 15, 0.15) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Settings panels readability */
+.layer__960e4 + .layer__960e4 .contentRegion_c25c6d,
+.layer__960e4 + .layer__960e4 .sidebar__36b60 {
+    background: rgba(15, 15, 15, 0.2) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* Keep full transparency for the main background areas */
+.base_c48ade,
+.content_c48ade {
+    background: transparent !important;
+}
+
+/* SELECTIVE PANEL TRANSPARENCY ADJUSTMENT - CONSISTENT VERSION */
+
+/* ALL panels with identical transparency - no exceptions */
+.chatContent_f75fb0,
+.messagesWrapper__36d07,
+.content_f75fb0,
+.membersWrap_c8ffbb,
+.container_c8ffbb,
+.guilds_c48ade,
+.sidebar_c48ade,
+.panels_c48ade,
+.sidebarList_c48ade,
+.sidebarListRounded_c48ade,
+.peopleColumn__133bf,
+.nowPlayingColumn__133bf,
+.title_f75fb0,
+.subtitleContainer_f75fb0,
+.container_f75fb0,
+.headerBar_f75fb0,
+.topic_f75fb0,
+.searchBar__5ec2f,
+.container_a45028,
+.wrapper_a45028,
+.customTheme_d125d2,
+.auto_d125d2,
+.disableScrollAnchor_d125d2,
+.managedReactiveScroller_d125d2,
+.inner_a45028 {
+    background: rgba(15, 15, 15, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Settings panels - same transparency */
+.layer__960e4 + .layer__960e4 .contentRegion_c25c6d,
+.layer__960e4 + .layer__960e4 .sidebar__36b60 {
+    background: rgba(15, 15, 15, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Keep main background areas fully transparent */
+.base_c48ade,
+.content_c48ade {
+    background: transparent !important;
+}
+
+/* Fix for square corners - make parent backgrounds transparent */
+
+/* All elements - make backgrounds transparent */
+.messagesWrapper__36d07,
+.sidebar_c48ade,
+.scrollerInner__36d07,
+.members_c8ffbb,
+.scrollerBase__99f8c,
+.title_f75fb0,
+.container__9293f,
+.group-spacing-16,
+.thin__99f8c,
+.fade__99f8c,
+.themed__9293f,
+.channelBottomBarArea_f75fb0,
+.scroller__36d07,
+.content_f75fb0,
+.scrollableContainer__74017,
+.themedBackground__74017,
+.inner__74017,
+.sansAttachButton__74017,
+.channelTextArea_f75fb0,
+.channelTextArea__74017,
+.chatContent_f75fb0,
+.form_f75fb0,
+.formWithLoadedChatInput_f75fb0,
+.vc-char-counter,
+.page_c48ade,
+.base_c48ade,
+.chat_f75fb0,
+.messagesContainer__36d07,
+.scrollerSpacer__36d07,
+.scrollerContent__36d07,
+.channelBottomBar_f75fb0,
+.channelAttachmentArea_f75fb0,
+.typing_f75fb0 {
+    background: transparent !important;
+}
+
+/* Nuclear option - force transparency on any remaining elements */
+[class*="f75fb0"]:not([class*="channelTextArea"]),
+[class*="36d07"]:not([class*="messagesWrapper"]),
+[class*="74017"]:not([class*="scrollableContainer"]):not([class*="themedBackground"]):not([class*="inner"]):not([class*="channelTextArea"]) {
+    background: transparent !important;
+}
+
+/* Keep main containers rounded */
+.chatContent_f75fb0,
+.messagesWrapper__36d07 {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+/* Move Discord's window control buttons slightly to the left */
+.winButtons_c38106.winButtonsWithDivider_c38106 {
+  /* Use a negative margin to pull the container to the left */
+  margin-left: 7.5px; 
+}
+
+/* Full sized gif picker */
+[class*='layerContainer_'] [class*='positionLayer__'] {
+    height: 100% !important;
+    [class*='drawerSizingWrapper__'] {
+        top: 3.5em !important;
+        height: calc(100% - 9em)
+    }
 }
 

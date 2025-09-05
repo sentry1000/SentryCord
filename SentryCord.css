@@ -5,26 +5,6 @@
  * @description A fluent mica Discord theme inspired by Apple's macOS.
 **/
 
-/*
-                    'c.
-                 ,xNMM.
-               .OMMMMo
-               OMMM0,
-     .;loddo:' loolloddol;.
-   cKMMMMMMMMMMNWMMMMMMMMMM0:
- .KMMMMMMMMMMMMMMMMMMMMMMMWd.
- XMMMMMMMMMMMMMMMMMMMMMMMX.
-;MMMMMMMMMMMMMMMMMMMMMMMM:
-:MMMMMMMMMMMMMMMMMMMMMMMM:
-.MMMMMMMMMMMMMMMMMMMMMMMMX.
- kMMMMMMMMMMMMMMMMMMMMMMMMWd.
- .XMMMMMMMMMMMMMMMMMMMMMMMMMMk
-  .XMMMMMMMMMMMMMMMMMMMMMMMMK.
-    kMMMMMMMMMMMMMMMMMMMMMMd
-     ;KMMMMMMMWXXWMMMMMMMk.
-       .cooc,.    .,coo:.
-*/
-
 /* ========================================
    IMPORTS
    ======================================== */
@@ -1045,5 +1025,19 @@ li[class*="messageListItem"]:hover {
         top: 3.5em !important;
         height: calc(100% - 9em)
     }
+}
+
+/* ========================================
+   VOICE STATE INDICATOR ICONS FIX (BOTTOM PANEL)
+   ======================================== */
+
+/* Target only the voice state indicator icons, exclude buttons and other controls */
+.panels_c48ade [role="img"]:not(button):not([class*="button"]):not([class*="Button"]):not([class*="controlButton"]) {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    -webkit-filter: none !important;
 }
 
